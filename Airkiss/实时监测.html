@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- H5页面窗口自动调整到设备宽度，并禁止用户缩放页面 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+​
+​
+    <!-- 忽略将页面中的数字识别为电话号码 -->
+    <meta name="format-detection" content="telephone=no" />
+​
+​
+    <!-- 忽略Android平台中对邮箱地址的识别 -->
+    <meta name="format-detection" content="email=no" />
+​
+​
+    <!-- 当网站添加到主屏幕快速启动方式，可隐藏地址栏，仅针对ios的safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+​
+​
+    <!-- ios7.0版本以后，safari上已看不到效果 -->
+    <!-- 将网站添加到主屏幕快速启动方式，仅针对ios的safari顶端状态条的样式 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <!-- 可选default、black、black-translucent -->
+    <meta charset="UTF-8">
+    <title>实时监测</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style>
+        p{
+            color:gray;
+            font-size:6vw
+            }
+        div1{
+            width:100vw
+        }
+
+
+    </style>
+</head>
+<body style="background: #012145">
+
+<div1 style="float:left;text-align:center;vertical-align:middle">
+    <p style="float:left;margin-right:30vw"><img src="timg.jpg" width="20vw" height="20vw" style="vertical-align:middle; margin-right:10vw;"/>心率(次/分):</p>
+    <p id="rate" style="float:left;color:green;text-align:center;"></p>
+</div1>
+
+<div1 style="float:left">
+    <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3167543302,964897440&fm=26&gp=0.jpg"  width="370px" style="float:left">
+</div1>
+
+<div1 style="float:left;vertical-align:middle;">
+    <p style="float:left;margin-right:30vw"><img src="fei.jpg" width="20vw" height="20vw" style="vertical-align:middle; margin-right:10vw;"/>呼吸率(次/分):</p>
+    <p id="flu" style="float:left;text-align:center;color:green"></p>
+</div1>
+
+<div1 style="float:left">
+    <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3167543302,964897440&fm=26&gp=0.jpg" width="370px" style="float:left">
+</div1>
+
+
+<div1 style="float:left;">
+        <p style="float:left"><img src="sleep.jpg" width="20vw" height="20vw" style="vertical-align:middle; margin-right:10vw;"/>离床状态值：</p>
+        <p id="on_bed" style="float:left;text-align:center;color:green"></p>
+        <p id="activate" style="margin-left:30vw;float:left;text-align:center;color:green"></p>
+</div1>
+
+<div1 style="text-align:center">
+<p style="font-size:4vw">实时模式不影响正常监测睡眠，设备默认30分钟后自动退出，或者再次短按设备背面按钮立即退出</p>
+</div1>
+
+<script>
+function get_rate(){
+     document.getElementById("rate").innerHTML = Math.floor(Math.random()*(130+1-70)+70);
+}
+function get_flu(){
+     document.getElementById("flu").innerHTML = Math.floor(Math.random()*(50+1-10)+10);
+}
+function is_on_bed(){
+     document.getElementById("on_bed").innerHTML = Math.round(Math.random());
+}
+function is_activate(){
+    document.getElementById("activate").innerHTML = Math.round(Math.random());
+}
+var t1 = setInterval("get_rate()",3000);
+var t2 = setInterval("get_flu()",3000);
+var t3 = setInterval("is_on_bed()",3000);
+var t4 = setInterval("is_activate()",3000);
+</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- H5页面窗口自动调整到设备宽度，并禁止用户缩放页面 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+​
+​
+    <!-- 忽略将页面中的数字识别为电话号码 -->
+    <meta name="format-detection" content="telephone=no" />
+​
+​
+    <!-- 忽略Android平台中对邮箱地址的识别 -->
+    <meta name="format-detection" content="email=no" />
+​
+​
+    <!-- 当网站添加到主屏幕快速启动方式，可隐藏地址栏，仅针对ios的safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+​
+​
+    <!-- ios7.0版本以后，safari上已看不到效果 -->
+    <!-- 将网站添加到主屏幕快速启动方式，仅针对ios的safari顶端状态条的样式 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <!-- 可选default、black、black-translucent -->
+    <meta charset="UTF-8">
+    <title>睡眠报告</title>
+    <script>
+         var now = new Date();
+         var year = now.getFullYear();
+         var month = now.getMonth();
+         var date = now.getDate();
+        function displayTime(){
+            var elt = document.getElementById("date");
+            var today = document.getElementById("day");
+            elt.innerHTML = (month+1)+"月"+date+"日";
+            today.innerHTML = (month+1)+"月"+date+"日";
+            document.getElementById('score').innerHTML = Math.floor(Math.random()*(100+1-1)+1)
+            document.getElementById('length').innerHTML = Math.floor(Math.random()*(24+1-1)+1)+"时"+Math.floor(Math.random()*(59+1))+"分"
+            }
+        window.onload = displayTime;
+
+        function yesterday(){
+            if( date > 1 ){
+                date -= 1;
+                document.getElementById('day').innerHTML = (month+1)+"月"+date+"日";
+                document.getElementById('score').innerHTML = Math.floor(Math.random()*(100+1-1)+1)
+                document.getElementById('length').innerHTML = Math.floor(Math.random()*(24+1-1)+1)+"时"+Math.floor(Math.random()*(59+1))+"分"
+            }
+            else{
+            }
+        }
+
+
+        function tomorrow(){
+            var max_day = new Date(year,month+1,0).getDate();
+            if( date < max_day ){
+                date += 1;
+                document.getElementById('day').innerHTML = (month+1)+"月"+date+"日";
+                document.getElementById('score').innerHTML = Math.floor(Math.random()*(100+1-1)+1)
+                document.getElementById('length').innerHTML = Math.floor(Math.random()*(24+1-1)+1)+"时"+Math.floor(Math.random()*(59+1))+"分"
+            }
+            else{
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div id="date" style="text-align:center;font-size:4vw;"></div>
+    <div style="text-align:center; margin-top:5vw;">
+        <a href="睡眠报告.html"><button style="width: 20vw; height:10vw;">日</button></a>
+        <a href="周报告.html"><button style="width: 20vw; height:10vw;">周</button></a>
+        <a href="月报告.html"><button style="width: 20vw; height:10vw;">月</button></a>
+        <a href="年报告.html"><button style="width: 20vw; height:10vw;">年</button></a>
+    </div>
+    <div style="width:22vw; height:2vw; margin:auto; margin-top:50px;vertical-align:middle">
+        <div id="left" onclick="yesterday()" style="float:left; width:2vw;height:2vw;border-top:3px solid #C0C0C0;border-right:3px solid #C0C0C0;transform: rotate(-135deg);"></div>
+        <div id="day" style=" float:left; margin-left:4vw; margin-right:4vw; text-align:center;font-size:2vw"></div>
+        <div id="right" onclick="tomorrow()" style="float:left; width:2vw;height:2vw;border-top:3px solid #C0C0C0;border-right:3px solid #C0C0C0;transform: rotate(45deg);"></div>
+    </div>
+    <p style="text-align:center;font-size:4vw">睡眠得分</p>
+    <p id="score" style="text-align:center;font-size:10vw"></p>
+    <div style="width:100vw; height:70vw;margin:auto">
+        <p id="length" style="font-size:8vw;text-align:center;"></p>
+        <p id="deep" style="width:45vw;height:5vw;font-size:6vw; float:left; text-align:center">*时*分</p>
+        <p id="shallow" style="width:45vw;height:5vw;font-size:6vw; float:right;text-align:center">*时*分</p>
+        <p id="deep_percent" style="width:45vw;height:5vw;font-size:4vw;float:left;text-align:center">深睡：35%</p>
+        <p id="shallow_percent" style="width:45vw;height:5vw;font-size:4vw;float:right;text-align:center">浅睡：65%</p>
+        <p id="sober" style="width:45vw;height:5vw;font-size:6vw; float:left; text-align:center">0</p>
+        <p style="width:45vw;height:5vw;font-size:4vw;text-align:center">清醒时长</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- H5页面窗口自动调整到设备宽度，并禁止用户缩放页面 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+​
+​
+    <!-- 忽略将页面中的数字识别为电话号码 -->
+    <meta name="format-detection" content="telephone=no" />
+​
+​
+    <!-- 忽略Android平台中对邮箱地址的识别 -->
+    <meta name="format-detection" content="email=no" />
+​
+​
+    <!-- 当网站添加到主屏幕快速启动方式，可隐藏地址栏，仅针对ios的safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+​
+​
+    <!-- ios7.0版本以后，safari上已看不到效果 -->
+    <!-- 将网站添加到主屏幕快速启动方式，仅针对ios的safari顶端状态条的样式 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <!-- 可选default、black、black-translucent -->
+    <meta charset="UTF-8">
+    <title>睡眠报告</title>
+    <script>
+         var now = new Date();
+         var year = now.getFullYear();
+         var month = now.getMonth();
+         var date = now.getDate();
+        function displayTime(){
+            var elt = document.getElementById("date");
+            var today = document.getElementById("day");
+            elt.innerHTML = (month+1)+"月"+date+"日";
+            today.innerHTML = (month+1)+"月"+date+"日";
+            document.getElementById('score').innerHTML = Math.floor(Math.random()*(100+1-1)+1)
+            document.getElementById('length').innerHTML = Math.floor(Math.random()*(24+1-1)+1)+"时"+Math.floor(Math.random()*(59+1))+"分"
+            }
+        window.onload = displayTime;
+
+
+
+    </script>
+</head>
+<body>
+    <div style="text-align:center;font-size:20px;">昨晚睡眠</div>
+    <div style="text-align:center;font-size:10px;">早上7：30同步</div>
+    <div style="width:800px; height:200px; border-style:solid; border-width:3px; border-color:#9400D3; margin:auto"">
+        <p id="score" style="text-align:center;font-size:100px"></p>
+    </div>
+
+    <div style="width:800px; height:200px; border-style:solid; border-width:3px; border-color:#9400D3; margin:auto;margin-top:30px">
+        <p id="length" style="font-size:30px;text-align:center;"></p>
+        <p id="deep" style="width:400px;height:20px;font-size:20px; float:left; text-align:center">10</p>
+        <p id="shallow" style="width:400px;height:20px;font-size:20px; float:right;text-align:center">11</p>
+        <p id="deep_percent" style="width:400px;height:20px;font-size:10px;float:left;text-align:center">深睡：35%</p>
+        <p id="shallow_percent" style="width:400px;height:20px;font-size:10px;float:left;text-align:center">浅睡：65%</p>
+        <p id="sober" style="width:400px;height:20px;font-size:20px; float:left; text-align:center">0</p>
+        <p style="width:400px;height:20px;font-size:10px;text-align:center">清醒时长</p>
+    </div>
+</body>
+</html>

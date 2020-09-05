@@ -1,0 +1,68 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>
+			#div1 .active{
+				background:yellow;
+			}
+			#div1 div{
+				display:none;
+			}
+		</style>
+		<script>
+			window.onload=function (){
+				var oDiv=document.getElementById('div1');
+				var aBtn=oDiv.getElementsByTagName('input');
+				var aDiv=oDiv.getElementsByTagName('div');
+
+
+				for(var i=0;i<aBtn.length;i++){			//遍历div1中的按钮
+
+					aBtn[i].index=i;			//给aBth[]添加自定义属性
+					aBtn[i].onclick=function (){
+
+						for(var i=0;i<aBtn.length;i++){	//遍历按钮，将class清除
+							aBtn[i].className='';
+							aDiv[i].style.display='none';
+						}
+						this.className='active';
+						aDiv[this.index].style.display='block';
+					}
+				}
+			}
+		</script>
+		<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript">
+
+    		$.getJSON ("warning.json", function (data)
+        	{
+            	$.each (data, function (i, item)
+            	{
+                	$ ("#unhandle").append (item.name + "的" + item.level +'<button  id="bt" onclick="handle()" style="font-size:4vw;margin-left:3vw">' + '已处理' + '</button>');
+            	});
+        	});
+
+        	 function handle(){
+        	 	$.getJSON ("warning.json", function (data)
+        	{
+            	$.each (data, function (i, item)
+            	{
+                	$ ("#handle").append (item.name + "的" + item.level);
+            	});
+        	});
+
+        	 	document.getElementById('unhandle').innerHTML = ''
+        	 }
+
+		</script>
+	</head>
+
+	<body style="background: #000000">
+		<div id="div1" style="text-align:center">
+			<input class="active" type="button" value="未处理" style="background: #000000;font-size:4vw;color:#FFFFFF;"/>
+			<input type="button" value="已处理" style="background: #000000;font-size:4vw;color:#FFFFFF;"/>
+			<div id = "unhandle" style="display:block; font-size:3vw;color:#FFFFFF;margin-top:5vw"></div>
+			<div id = "handle"   style="font-size:3vw;color:#FFFFFF;margin-top:5vw"></div>
+		</div>
+	</body>
+</html>
